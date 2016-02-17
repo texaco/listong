@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ong extends Model
 {
-    protected $table = "ong";
+    protected $table = 'ong';
     protected $fillable = ['name', 'email', 'phone'];
-    
     
 }

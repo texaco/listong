@@ -12,7 +12,7 @@ class CreateOngsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ongs', function (Blueprint $table) {
+        Schema::create('ong', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email');
@@ -28,6 +28,6 @@ class CreateOngsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ongs');
+        Schema::drop('ong');
     }
 }
