@@ -13,6 +13,8 @@
 
 Route::get('/','FrontController@index');
 Route::get('admin','BackController@index');
+Route::resource('ong','OngController');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
