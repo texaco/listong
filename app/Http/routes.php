@@ -12,7 +12,7 @@
 */
 
 Route::get('/','FrontController@index');
-
+Route::get('admin','BackController@index');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
