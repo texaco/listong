@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use listong\Http\Requests;
 use listong\Http\Controllers\Controller;
 use listong\Ong;
+use Redirect;
+use Session;
 
 class OngController extends Controller
 {
@@ -22,13 +24,24 @@ class OngController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listing()
+    {
+        $ong = Ong::all();
+        return view('ong.listing', compact('ong'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('ong.create');
     }
 
     /**
@@ -39,9 +52,13 @@ class OngController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Ong::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'phone' => $request['phone']
+            ]);
+        return Redirect::to('/listing');
     }
-
     /**
      * Display the specified resource.
      *
