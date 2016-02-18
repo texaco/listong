@@ -13,7 +13,7 @@
 	</div>
   	<div class="row">
         <div class="col-sm-2">
-			<div class="panel panel-success">
+			<div class="panel panel-info">
 			<div class="panel-heading">
 			  	<h3 class="panel-title">Entity ONG</h3>
 			</div>
@@ -24,7 +24,7 @@
 			  <a href="{!!URL::to('listing')!!}">Listing ONG</a>
 			</div>
 			</div>
-			<div class="panel panel-success">
+			<div class="panel panel-info">
 			<div class="panel-heading">
 			  	<h3 class="panel-title">Entity 2</h3>
 			</div>
