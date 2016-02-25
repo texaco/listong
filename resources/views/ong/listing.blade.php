@@ -1,5 +1,4 @@
 @extends('layouts.back')
-<?php $message=Session::get('message');?>
 	@section('content')
 	<table class="table">
 		<thead>
