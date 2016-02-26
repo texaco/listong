@@ -8,7 +8,7 @@ Route::get('auth/login', [
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 
 Route::get('auth/logout', [
-	'uses'	=> 'Auth\AuthController@getLogout',
+	'uses'	=> 'Auth\AuthController@logout',
 	'as'	=> 'logout'
 	]);
 
