@@ -30,8 +30,9 @@ class OngController extends Controller
      */
     public function listing()
     {
-        $ong = Ong::all();
+        $ong = Ong::paginate(5);
         return view('ong.listing', compact('ong'));
+        //dd($ong);
     }
 
     /**

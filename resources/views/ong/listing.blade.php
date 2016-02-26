@@ -1,6 +1,6 @@
 @extends('layouts.back')
 	@section('content')
-	<table class="table">
+	<table class="table table-striped">
 		<thead>
 			<th>Nombre</th>
 			<th>Email</th>
@@ -19,5 +19,6 @@
 			</tbody>
 		@endforeach
 	</table>
+	{!! $ong->render() !!}
 	@stop	
 
