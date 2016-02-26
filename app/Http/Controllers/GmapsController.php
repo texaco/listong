@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 use listong\Http\Requests;
 use listong\Http\Controllers\Controller;
 
-class FrontController extends Controller
+class GmapsController extends Controller
 {
-    function index(){
-    	//configuaración
+    public function index()
+    {
+        //configuaración
         $config = array();
         $config['center'] = 'auto';
         $config['map_width'] = 400;
@@ -36,7 +37,5 @@ class FrontController extends Controller
  
         //Devolver vista con datos del mapa
         return view('index', compact('map'));
-
-        //return View('index');
     }
 }

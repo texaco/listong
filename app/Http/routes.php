@@ -40,7 +40,8 @@ Route::get('admin','BackController@index');
 Route::resource('ong','OngController');
 Route::get('listing','OngController@listing');
 
-
+// Google Maps
+Route::get('/gmaps', ['as ' => 'gmaps', 'uses' => 'GmapsController@index']);
 
 Route::group(['middleware' => ['web']], function () {
     // your routes here

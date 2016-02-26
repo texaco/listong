@@ -1,5 +1,6 @@
 @extends('layouts.front')
 
 @section('content')
-<h1>Index</h1>
+<h1>Front-End Index</h1>
+{!!$map['html']!!}
 @stop
