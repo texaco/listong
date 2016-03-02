@@ -2,11 +2,10 @@
 
 namespace listong\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use listong\Http\Requests;
 use listong\Http\Controllers\Controller;
 use listong\Ong;
+use Request;
 use Redirect;
 use Session;
 
@@ -19,20 +18,8 @@ class OngController extends Controller
      */
     public function index()
     {
-        $ong = Ong::all();
-        return view('ong.index', compact('ong'));
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function listing()
-    {
         $ong = Ong::paginate(5);
-        return view('ong.listing', compact('ong'));
-        //dd($ong);
+        return view('ong.index', compact('ong'));
     }
 
     /**
@@ -53,12 +40,10 @@ class OngController extends Controller
      */
     public function store(Request $request)
     {
-        Ong::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'phone' => $request['phone']
-            ]);
-        return Redirect::to('/listing');
+        $ong = new Ong(Request::all());
+        $ong->save();
+
+        return Redirect::to('/ong');
     }
     /**
      * Display the specified resource.
@@ -79,7 +64,8 @@ class OngController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ong = Ong::findOrFail($id);
+        return view('ong.edit', compact('ong'));
     }
 
     /**
@@ -91,7 +77,11 @@ class OngController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ong = Ong::findOrFail($id);
+        $ong->fill(Request::all());
+        $ong->save();
+
+        return Redirect::to('/ong');
     }
 
     /**
@@ -102,6 +92,8 @@ class OngController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //dd($id);
+        Ong::destroy($id);
+        return Redirect::to('/ong');
     }
 }

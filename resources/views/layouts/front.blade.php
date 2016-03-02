@@ -6,7 +6,6 @@
     <title></title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap-theme.min.css')}}" rel="stylesheet">
-    <script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -18,7 +17,7 @@
 			    <span class="icon-bar"></span>
 			    <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Listong</a>
+			<a class="navbar-brand" href="/">Listong</a>
 		    </div>
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
@@ -37,7 +36,7 @@
 		</div>
 	</nav>
 	<div class="container">
-               @if (Session::has('errors'))
+       	@if (Session::has('errors'))
 		    <div class="alert alert-warning" role="alert">
 			<ul>
 	            <strong>Oops! Something went wrong : </strong>

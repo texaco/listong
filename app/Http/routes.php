@@ -38,7 +38,7 @@ Route::get('admin','BackController@index');
 
 // ONG Controller routes...
 Route::resource('ong','OngController');
-Route::get('listing','OngController@listing');
+//Route::get('list_ong','OngController@listing');
 
 // Google Maps
 Route::get('/gmaps', ['as ' => 'gmaps', 'uses' => 'GmapsController@index']);

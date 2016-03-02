@@ -36,6 +36,6 @@ class GmapsController extends Controller
         $map = \Gmaps::create_map();
  
         //Devolver vista con datos del mapa
-        return view('index', compact('map'));
+        return view('gmaps.index', compact('map'));
     }
 }

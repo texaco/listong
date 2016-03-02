@@ -6,6 +6,7 @@
     <title></title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap-theme.min.css')}}" rel="stylesheet">
+    <script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -17,46 +18,39 @@
 			    <span class="icon-bar"></span>
 			    <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/">Listong</a>
+			<a class="navbar-brand" href="#">Listong</a>
 		    </div>
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-				        <li><a href="#">Menu1</a></li>
-						<li><a href="#">Menu2</a></li>
-						<li><a href="{{url('gmaps')}}">Google Maps</a></li>
+				    @if (Auth::guest())
+				        <li><a href="{{route('login')}}">Entrar</a></li>
+						<li><a href="{{route('register')}}">Registrar</a></li>
+				    @else
+		                <li>
+		                    <a href="#">{{ Auth::user()->name }}</a>
+		                </li>
 		                <li><a href="{{route('logout')}}">Salir</a></li>
+		                
+			        @endif
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="container-fluid">
-	  	<div class="row">
-	        <div class="col-sm-2">
-				<div class="panel panel-info">
-				<div class="panel-heading">
-				  	<h3 class="panel-title">Entity ONG</h3>
-				</div>
-				<div class="panel-body">
-				  <a href="{!!URL::to('/ong/create')!!}">Create ONG</a>
-				</div>
-				<div class="panel-body">
-				  <a href="{!!URL::to('/ong')!!}">Listing ONG</a>
-				</div>
-				</div>
-				<div class="panel panel-info">
-				<div class="panel-heading">
-				  	<h3 class="panel-title">Entity 2</h3>
-				</div>
-				<div class="panel-body">
-				  Entity Option
-				</div>
-				</div>
-	        </div>
-	        <div class="col-sm-10">
-				@yield('content')
-	        </div>
-	  	</div>
-	</div>
+	<div class="container">
+       	@if (Session::has('errors'))
+		    <div class="alert alert-warning" role="alert">
+			<ul>
+	            <strong>Oops! Something went wrong : </strong>
+			    @foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+		            @endforeach
+		        </ul>
+		    </div>
+		@endif
+    </div>
+    @yield('content')
+    <!-- Scripts -->
+    {!! Html::script('js/bootstrap.min.js') !!}
 
 </body>
 </html>
