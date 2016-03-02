@@ -1,8 +1,13 @@
 @extends('layouts.back')
 	@section('content')
-	{!!Form::open(['route'=>'ong.store','method'=>'POST'])!!}
-		@include('ong.form.ong')
-		{!!Form::submit('Insertar',['class'=>'btn btn-primary'])!!}
-	{!!Form::close()!!}
+	<div class="panel panel-default">
+		<div class="panel-heading">Nueva ONG</div>
+		<div class="panel-body">
+		{!!Form::open(['route'=>'ong.store','method'=>'POST'])!!}
+			@include('ong.form.ong')
+			{!!Form::submit('Insertar',['class'=>'btn btn-primary'])!!}
+		{!!Form::close()!!}
+		</div>
+	</div>
 	@stop	
 
