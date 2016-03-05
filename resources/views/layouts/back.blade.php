@@ -6,8 +6,17 @@
     <title></title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap-theme.min.css')}}" rel="stylesheet">
-    <script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}
-    
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+		function fill_Location(newLat, newLng)
+		{
+			$("input[name='latitud']").val(newLat);
+			$("input[name='longitud']").val(newLng);
+			//document.getElementById('latitud').value=newLat;
+			//document.getElementById('longitud').value=newLng;
+		}
+	</script>
+    <script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}   
 </head>
 <body>
 	<nav class="navbar navbar-default">

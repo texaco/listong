@@ -8,6 +8,7 @@ use listong\Ong;
 use Request;
 use Redirect;
 use Session;
+use Gmaps;
 
 class OngController extends Controller
 {
@@ -19,7 +20,23 @@ class OngController extends Controller
     public function index()
     {
         $ong = Ong::paginate(5);
-        return view('ong.index', compact('ong'));
+        //configuaración
+        $config = array();
+        $config['center'] = '37.4419, -122.1419';
+        $config['map_width'] = 700;
+        $config['map_height'] = 500;
+        //$config['onclick'] = 'alert(\'You just clicked at: \' + event.latLng.lat() + \', \' + event.latLng.lng()); createMarker_map({ map: map, position:event.latLng });';
+        $config['onclick'] = 'fill_Location(event.latLng.lat(), event.latLng.lng());createMarker_map({ map: map, position:event.latLng });';
+        $config['zoom'] = 'auto';
+        
+        Gmaps::initialize($config);
+ 
+        $marker = array();
+    
+        Gmaps::add_marker($marker);
+ 
+        $map = Gmaps::create_map();
+        return view('ong.index', compact('ong','map'));
     }
 
     /**
@@ -29,7 +46,25 @@ class OngController extends Controller
      */
     public function create()
     {
-        return view('ong.create');
+        //configuaración
+        $config = array();
+        $config['center'] = '37.4419, -122.1419';
+        $config['map_width'] = 700;
+        $config['map_height'] = 500;
+        //$config['onclick'] = 'alert(\'You just clicked at: \' + event.latLng.lat() + \', \' + event.latLng.lng()); createMarker_map({ map: map, position:event.latLng });';
+        $config['onclick'] = 'fill_Location(event.latLng.lat(), event.latLng.lng());createMarker_map({ map: map, position:event.latLng });';
+        $config['zoom'] = 'auto';
+        
+        Gmaps::initialize($config);
+ 
+        $marker = array();
+    
+        Gmaps::add_marker($marker);
+ 
+        $map = Gmaps::create_map();
+ 
+        //Devolver vista con datos del mapa
+        return view('ong.create', compact('map'));
     }
 
     /**

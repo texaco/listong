@@ -10,3 +10,5 @@
 	{!!Form::label('Teléfono:')!!}
 	{!!Form::text('phone',null,['class'=>'form-control','placeholder'=>'Insertar Teléfono'])!!}
 </div>
+	{!!Form::hidden('latitud')!!}
+	{!!Form::hidden('longitud')!!}
