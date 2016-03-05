@@ -6,6 +6,24 @@
     <title></title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap-theme.min.css')}}" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+		function updateDatabase(newLat, newLng)
+		{
+			// make an ajax request to a PHP file
+			// on our site that will update the database
+			// pass in our lat/lng as parameters
+			var location = { 'newLat': newLat, 'newLng': newLng, 'var1': 'value1' };
+			$.ajax({
+				url: "/gmaps/editing", 
+				type: 'POST',
+				dataType: 'JSON',
+				data:location,
+				success: function() {
+				alert("Database updated");}
+			});
+		}
+	</script>
     <script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}
 </head>
 <body>

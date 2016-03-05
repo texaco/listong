@@ -41,7 +41,8 @@ Route::resource('ong','OngController');
 //Route::get('list_ong','OngController@listing');
 
 // Google Maps
-Route::get('/gmaps', ['as ' => 'gmaps', 'uses' => 'GmapsController@index']);
+Route::get('gmaps', ['as ' => 'gmaps', 'uses' => 'GmapsController@index']);
+Route::post('gmaps/editing','GmapsController@editing');
 
 Route::group(['middleware' => ['web']], function () {
     // your routes here
