@@ -100,19 +100,23 @@ class OngController extends Controller
     public function edit($id)
     {
         $ong = Ong::findOrFail($id);
+        //dd($ong->latitud.",".$ong->longitud);
         //configuaración
         $config = array();
-        $config['center'] = '37.4419, -122.1419';
+        $config['center'] = $ong->latitud.",".$ong->longitud;
         $config['map_width'] = 700;
         $config['map_height'] = 500;
         //$config['onclick'] = 'alert(\'You just clicked at: \' + event.latLng.lat() + \', \' + event.latLng.lng()); createMarker_map({ map: map, position:event.latLng });';
         $config['onclick'] = 'fill_Location(event.latLng.lat(), event.latLng.lng());createMarker_map({ map: map, position:event.latLng });';
-        $config['zoom'] = 'auto';
+        $config['zoom'] = 10;
         
         Gmaps::initialize($config);
  
         $marker = array();
-    
+        $marker['position'] = $ong->latitud.",".$ong->longitud;
+        $marker['draggable'] = TRUE;
+        $marker['animation'] = 'DROP';
+
         Gmaps::add_marker($marker);
  
         $map = Gmaps::create_map();

@@ -11,6 +11,8 @@
 			{!!Form::open(['route'=>['ong.destroy',$ong->id],'method'=>'DELETE'])!!}
 				{!!Form::submit('Eliminar',['class'=>'btn btn-warning'])!!}
 			{!!Form::close()!!}
+			{!!$map['html']!!}
+			
 		</div>
 	</div>	
 	@stop	

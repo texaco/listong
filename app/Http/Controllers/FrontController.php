@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use listong\Http\Requests;
 use listong\Http\Controllers\Controller;
 use Gmaps;
+use listong\Ong;
 
 class FrontController extends Controller {
 	function index() {
 		// configuaración
+		$ong = Ong::all();
 		$config = array ();
 		$config ['center'] = 'auto';
 		$config ['map_width'] = 700;
@@ -27,24 +29,14 @@ class FrontController extends Controller {
     	 centreGot = true;';
 		Gmaps::initialize ( $config );
 		
-		$marker = array ();
-		$marker ['position'] = '37.429, -122.1519';
-		$marker ['infowindow_content'] = '1 - Hello World!';
-		$marker ['icon'] = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|9999FF|000000';
-		Gmaps::add_marker ( $marker );
-		
-		$marker = array ();
-		$marker ['position'] = '37.409, -122.1319';
-		$marker ['draggable'] = TRUE;
-		$marker ['animation'] = 'DROP';
-		Gmaps::add_marker ( $marker );
-		
-		$marker = array ();
-		$marker ['position'] = '37.449, -122.1419';
-		$marker ['onclick'] = 'alert("You just clicked me!!")';
-		
-		Gmaps::add_marker ( $marker );
-		
+		foreach ($ong as $o){
+			$marker = array ();
+				
+			$marker ['position'] = $o->latitud.",".$o->longitud;
+			$marker ['infowindow_content'] = $o->name;
+			Gmaps::add_marker ( $marker );
+		}
+	
 		$map = Gmaps::create_map ();
 		
 		// Devolver vista con datos del mapa
