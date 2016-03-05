@@ -17,8 +17,8 @@ class GmapsController extends Controller
         $config['center'] = '37.4419, -122.1419';
         $config['map_width'] = 700;
         $config['map_height'] = 500;
-        //$config['onclick'] = 'alert(\'You just clicked at: \' + event.latLng.lat() + \', \' + event.latLng.lng());createMarker_map({ map: map, position:event.latLng });updateDatabase(event.latLng.lat());';
-        $config['onclick'] = 'updateDatabase(event.latLng.lat(), event.latLng.lng());';
+        //$config['onclick'] = 'alert(\'You just clicked at: \' + event.latLng.lat() + \', \' + event.latLng.lng()); createMarker_map({ map: map, position:event.latLng });';
+        $config['onclick'] = 'updateDatabase(event.latLng.lat(), event.latLng.lng());createMarker_map({ map: map, position:event.latLng });';
         $config['zoom'] = 'auto';
         /*
         $config['onboundschanged'] = 'if (!centreGot) {
@@ -60,7 +60,7 @@ class GmapsController extends Controller
     {
         //$data = Input::get('loc');
         $input = $request->input();
-        dd($input['newLat']);
-        //dd($input);
+        //dd($input['newLat']);
+        dd($input);
     }
 }
