@@ -6,6 +6,8 @@
     <title></title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap-theme.min.css')}}" rel="stylesheet">
+    <script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}
+    
 </head>
 <body>
 	<nav class="navbar navbar-default">

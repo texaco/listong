@@ -36,6 +36,9 @@ Route::get('/','FrontController@index');
 // Back-End routes...
 Route::get('admin','BackController@index');
 
+// Back-End Users routes...
+Route::get('users','BackUsersController@index');
+
 // ONG Controller routes...
 Route::resource('ong','OngController');
 //Route::get('list_ong','OngController@listing');
