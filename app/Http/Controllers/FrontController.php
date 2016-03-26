@@ -27,6 +27,10 @@ class FrontController extends Controller {
     	 });
     	 }
     	 centreGot = true;';
+		
+		
+		
+		
 		Gmaps::initialize ( $config );
 		
 		foreach ($ong as $o){
