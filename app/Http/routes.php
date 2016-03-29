@@ -40,8 +40,8 @@ Route::get('admin','BackController@index');
 Route::get('users','BackUsersController@index');
 
 // ONG Controller routes...
+Route::get('ong/detail/{id}','OngController@detail');
 Route::resource('ong','OngController');
-//Route::get('list_ong','OngController@listing');
 
 // Google Maps
 Route::get('gmaps', ['as ' => 'gmaps', 'uses' => 'GmapsController@index']);

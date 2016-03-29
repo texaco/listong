@@ -37,7 +37,9 @@ class FrontController extends Controller {
 			$marker = array ();
 				
 			$marker ['position'] = $o->latitud.",".$o->longitud;
-			$marker ['infowindow_content'] = 'Nombre: '.$o->name.'<br> Teléfono: '.$o->phone.'<br> Email: '.$o->email;
+			$marker ['infowindow_content'] = 'Nombre: '.$o->name.
+			'<br> Teléfono: '.$o->phone.'<br> Email: '.$o->email.
+			"<br><a href='/ong/detail/".$o->id."'>Ver detalle</a>";
 			Gmaps::add_marker ( $marker );
 		}
 	

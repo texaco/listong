@@ -86,9 +86,29 @@ class OngController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function detail($id)
     {
-        //
+        $ong = Ong::findOrFail($id);
+        //dd($ong->latitud.",".$ong->longitud);
+        //configuaración
+        $config = array();
+        $config['center'] = $ong->latitud.",".$ong->longitud;
+        $config['map_width'] = 700;
+        $config['map_height'] = 500;
+        //$config['onclick'] = 'alert(\'You just clicked at: \' + event.latLng.lat() + \', \' + event.latLng.lng()); createMarker_map({ map: map, position:event.latLng });';
+        $config['onclick'] = 'fill_Location(event.latLng.lat(), event.latLng.lng());createMarker_map({ map: map, position:event.latLng });';
+        $config['zoom'] = 10;
+        
+        Gmaps::initialize($config);
+ 
+        $marker = array();
+        $marker['position'] = $ong->latitud.",".$ong->longitud;
+        $marker['animation'] = 'DROP';
+
+        Gmaps::add_marker($marker);
+ 
+        $map = Gmaps::create_map();
+        return view('ong.detail', compact('ong','map'));
     }
 
     /**
