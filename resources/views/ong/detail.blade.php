@@ -17,6 +17,7 @@
 			  	<div class="panel-heading"><h3 class="panel-title">Localización</h3></div>
 			  	<div class="panel-body">{!!$map['html']!!}</div>
 			</div>
+			<p class="text-center"><a href="{{url('/')}}" class="btn btn-info" role="button">Atrás</a></p>
 		</div>	
 	</div>
 	@stop	
