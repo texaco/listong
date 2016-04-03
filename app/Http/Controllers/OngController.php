@@ -75,25 +75,34 @@ class OngController extends Controller
      */
     public function detail($id)
     {
+    	
         $ong = Ong::findOrFail($id);
+        $ongs = Ong::all();
         //dd($ong->latitud.",".$ong->longitud);
         //configuaración
         $config = array();
         $config['center'] = $ong->latitud.",".$ong->longitud;
-        $config['map_width'] = 700;
-        $config['map_height'] = 500;
+        $config['map_width'] = 400;
+        $config['map_height'] = 300;
         //$config['onclick'] = 'alert(\'You just clicked at: \' + event.latLng.lat() + \', \' + event.latLng.lng()); createMarker_map({ map: map, position:event.latLng });';
         $config['onclick'] = 'fill_Location(event.latLng.lat(), event.latLng.lng());createMarker_map({ map: map, position:event.latLng });';
         $config['zoom'] = 10;
         
         Gmaps::initialize($config);
- 
-        $marker = array();
-        $marker['position'] = $ong->latitud.",".$ong->longitud;
-        $marker['animation'] = 'DROP';
-
-        Gmaps::add_marker($marker);
- 
+        
+        foreach ($ongs as $o){
+        	$marker = array ();        
+        	$marker ['position'] = $o->latitud.",".$o->longitud;
+        	if($o->latitud==$ong->latitud && $o->longitud==$ong->longitud)
+        	{
+        		$marker['icon'] = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+        	}else
+        	{
+        		$marker['icon'] = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+        	}
+        	Gmaps::add_marker ( $marker );
+        }
+        
         $map = Gmaps::create_map();
         return view('ong.detail', compact('ong','map'));
     }
