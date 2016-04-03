@@ -12,3 +12,4 @@
 </div>
 	{!!Form::hidden('latitud')!!}
 	{!!Form::hidden('longitud')!!}
+	{!!Form::hidden('user_id', Auth::user()->id)!!}

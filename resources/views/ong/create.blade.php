@@ -7,6 +7,7 @@
 			@include('ong.form.ong')
 			{!!Form::submit('Insertar',['class'=>'btn btn-primary'])!!}
 		{!!Form::close()!!}
+		<input type="text" id="myPlaceTextBox" />
 		{!!$map['html']!!}
 		</div>
 	</div>

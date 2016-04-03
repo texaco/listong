@@ -19,24 +19,8 @@ class OngController extends Controller
      */
     public function index()
     {
-        $ong = Ong::paginate(5);
-        //configuaración
-        $config = array();
-        $config['center'] = '37.4419, -122.1419';
-        $config['map_width'] = 700;
-        $config['map_height'] = 500;
-        //$config['onclick'] = 'alert(\'You just clicked at: \' + event.latLng.lat() + \', \' + event.latLng.lng()); createMarker_map({ map: map, position:event.latLng });';
-        $config['onclick'] = 'fill_Location(event.latLng.lat(), event.latLng.lng());createMarker_map({ map: map, position:event.latLng });';
-        $config['zoom'] = 'auto';
-        
-        Gmaps::initialize($config);
- 
-        $marker = array();
-    
-        Gmaps::add_marker($marker);
- 
-        $map = Gmaps::create_map();
-        return view('ong.index', compact('ong','map'));
+        $ong = Ong::where("user_id", "=", Auth()->user()->id)->paginate(5);
+        return view('ong.index', compact('ong'));
     }
 
     /**
@@ -51,8 +35,11 @@ class OngController extends Controller
         $config['center'] = '37.4419, -122.1419';
         $config['map_width'] = 700;
         $config['map_height'] = 500;
-        //$config['onclick'] = 'alert(\'You just clicked at: \' + event.latLng.lat() + \', \' + event.latLng.lng()); createMarker_map({ map: map, position:event.latLng });';
-        $config['onclick'] = 'fill_Location(event.latLng.lat(), event.latLng.lng());createMarker_map({ map: map, position:event.latLng });';
+        $config['places'] = TRUE;
+        $config['placesAutocompleteInputID'] = 'myPlaceTextBox';
+        $config['placesAutocompleteBoundsMap'] = TRUE;
+        $config['placesAutocompleteOnChange'] = 'alert(\'hacer algo\');';
+        $config['onclick'] = 'fill_Location(event.latLng.lat(), event.latLng.lng());add_marker({ map: map, position:event.latLng });';
         $config['zoom'] = 'auto';
         
         Gmaps::initialize($config);

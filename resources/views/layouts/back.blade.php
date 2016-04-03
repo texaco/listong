@@ -7,7 +7,9 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap-theme.min.css')}}" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    @if(isset($map))
     <script type="text/javascript">
+    
 		function fill_Location(newLat, newLng)
 		{
 			$("input[name='latitud']").val(newLat);
@@ -15,8 +17,15 @@
 			//document.getElementById('latitud').value=newLat;
 			//document.getElementById('longitud').value=newLng;
 		}
+
+		function add_marker(data){
+			createMarker_map({ map: data.map, position:data.position });
+		}
+		
+    	var centreGot = false;
 	</script>
-    <script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}   
+    {!!$map['js']!!}   
+	@endif
 </head>
 <body>
 	<nav class="navbar navbar-default">
